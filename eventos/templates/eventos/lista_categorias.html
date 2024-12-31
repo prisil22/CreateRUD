@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Categorías</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Lista de Categorías</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.nombre }}</td>
+                    <td>
+                        <a href="{% url 'editar_categoria' categoria.id %}">Editar</a> |
+                        <a href="{% url 'eliminar_categoria' categoria.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'nueva_categoria' %}">Nueva Categoría</a>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

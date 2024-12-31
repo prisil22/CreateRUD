@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Categoría</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>{% if categoria %}Editar Categoría{% else %}Nueva Categoría{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'lista_categorias' %}">Volver a la Lista</a>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
